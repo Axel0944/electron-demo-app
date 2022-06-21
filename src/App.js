@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CytoscapeComponent from 'react-cytoscapejs';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class MyApp extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    const elements = [
+       { data: { id: 'one', label: 'Node 1' }, position: { x: 150, y: 50 } },
+       { data: { id: 'two', label: 'Node 2' }, position: { x: 250, y: 140 } },
+       { data: { source: 'one', target: 'two', label: 'Edge from Node1 to Node2' } }
+    ];
+
+    return <CytoscapeComponent elements={elements} style={ { width: '600px', height: '600px' } } />;
+  }
 }
 
-export default App;
+export default MyApp;
